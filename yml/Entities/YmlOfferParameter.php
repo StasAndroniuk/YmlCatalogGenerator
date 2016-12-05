@@ -17,5 +17,23 @@ class YmlOfferParameter
         {
             throw new InvalidArgumentException("Empty parameter name");
         }
+        $this->name=$name;
+        $this->value=$value;
+        $this->unit=$unit;
+
+    }
+    public  function Equal(YmlOfferParameter $parameter)
+    {
+        return $this->name==$parameter->name && $this->value==$parameter->value && $this->unit==$parameter->unit;
+    }
+    public function generate()
+    {
+        $str="<param name=\"".$this->name."\"";
+        if($this->unit!="")
+        {
+            $str.=" unit=\"".$this->unit."\"";
+        }
+        $str.=">".$this->value."</param>";
+        return $str;
     }
 }
