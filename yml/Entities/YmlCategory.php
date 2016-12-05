@@ -39,4 +39,8 @@ class YmlCategory
     {
         return $this->id==$category->id && $this->name==$category->name && $this->parent==$category->parent;
     }
+    public function getCategoryid()
+    {
+        return $this->id;
+    }
 }

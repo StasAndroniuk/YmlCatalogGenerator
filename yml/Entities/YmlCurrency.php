@@ -31,4 +31,8 @@ class YmlCurrency
     {
         return $this->id==$currency->id && $this->rate==$currency->rate;
     }
+    public function getCurrencyId()
+    {
+        return $this->id;
+    }
 }
