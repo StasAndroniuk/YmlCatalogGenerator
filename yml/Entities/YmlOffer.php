@@ -56,6 +56,14 @@ class YmlOffer
     {
         return $this->available;
     }
+    public function getofferType()
+    {
+        return $this->type;
+    }
+    public function getStoreType()
+    {
+        return $this->store;
+    }
     public function setOfferPrice($price)
     {
         if(!preg_match("/[0-9]+\.[0-9]+/",$price))
@@ -91,6 +99,14 @@ class YmlOffer
             throw new InvalidArgumentException("Url already exists");
         }
         $this->pictures[]=$pictureUrl;
+    }
+    public function setOfferUrl($url)
+    {
+        if($url=="")
+        {
+            throw new InvalidArgumentException("Empty offer url");
+        }
+        $this->url=$url;
     }
     public function changeStoreType()
     {
@@ -180,6 +196,14 @@ class YmlOffer
             }
         }
         $this->params[]=$param;
+    }
+    public function setOfferType($type)
+    {
+        if($type=="")
+        {
+            throw new InvalidArgumentException("Empty offer type");
+        }
+        $this->type=$type;
     }
     public function generate()
     {
