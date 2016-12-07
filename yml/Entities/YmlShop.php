@@ -85,6 +85,7 @@ class YmlShop
      */
     public function addCategories($data)
     {
+
         if(!is_array($data) || $data=="")
         {
             throw new InvalidArgumentException("Invalid category data");
@@ -93,7 +94,10 @@ class YmlShop
         {
             throw new InvalidArgumentException("Empty category data");
         }
-        $this->categories[]=new YmlCategory($data['id'],$data['name'],$data['parent']);
+        foreach ($data as $category)
+        {
+            $this->categories[]=new YmlCategory($category['id'],$category['name'],$category['parent']);
+        }
     }
     /*
       * data format array(
@@ -156,39 +160,39 @@ class YmlShop
             {
                 $temp_offer->addPicture($pic);
             }
-            if($offer['type']!="" && $offer['type']!=$temp_offer->getofferType())
+            if(isset($offer['type']) && $offer['type']!=$temp_offer->getofferType())
             {
                 $temp_offer->setOfferType($offer['type']);
             }
-            if($offer['store']!="" && $temp_offer->getStoreType()!=$offer['store'])
+            if(isset($offer['store']) && $temp_offer->getStoreType()!=$offer['store'])
             {
                 $temp_offer->changeStoreType();
             }
-            if($offer['oldPrice']!="")
+            if(isset($offer['oldPrice']))
             {
                 $temp_offer->setOldPrice($offer['oldPrice']);
             }
-            if($offer['available']!="")
+            if(isset($offer['available']))
             {
                 $temp_offer->changeAvaliableStatus();
             }
-            if($offer['description']!="")
+            if(isset($offer['description']))
             {
                 $temp_offer->setOfferDescription($offer['description']);
             }
-            if($offer['age']!="")
+            if(isset($offer['age']))
             {
                 $temp_offer->setOfferAge($offer['age']);
             }
-            if($offer['salesNodes']!="")
+            if(isset($offer['salesNodes']))
             {
                 $temp_offer->setSalesNotes($offer['salesNodes']);
             }
-            if($offer['barcode']!="")
+            if(isset($offer['barcode']))
             {
                 $temp_offer->setOfferBarcode($offer['barcode']);
             }
-            if(count($offer['params'])>0)
+            if(isset($offer['params']) && count($offer['params'])>0)
             {
                 foreach ($offer['params'] as $param)
                 {

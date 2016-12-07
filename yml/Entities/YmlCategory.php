@@ -32,7 +32,7 @@ class YmlCategory
         {
             $str.=" parentId=\"".$this->parent."\" ";
         }
-        $str.=">".$this->name."</currency>";
+        $str.=">".$this->name."</category>";
         return $str;
     }
     public  function Equal(YmlCategory $category)
