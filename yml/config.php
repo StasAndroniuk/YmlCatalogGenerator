@@ -7,9 +7,9 @@
  */
 class DbConfig
 {
-    private static  $db_name="jini_db";
-    private  static  $db_user="jini_db";
-    private  static  $db_pass="9BnQJxE8";
+    private static  $db_name="database";
+    private  static  $db_user="user";
+    private  static  $db_pass="password";
     private static  $db_server="localhost";
     public  static function getDbInfo()
     {
